@@ -29,11 +29,16 @@ pipeline {
            steps {
                  withCredentials([usernamePassword(credentialsId: 'b2674f2b-668e-4af0-9b33-dc80948a6230', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                  sh "sudo docker login -u ${env.Username} -p ${env.Password}"
-                 sh "sudo docker image tag myjava-image salilkul87/myjava-image:${BUILD_NUMBER}"
-                 sh "sudo docker image push salilkul87/myjava-image:${BUILD_NUMBER}" 
+                 sh "sudo docker image tag myjava-image salilkul87/myjava-image:test"
+                 sh "sudo docker image push salilkul87/myjava-image:test" 
                } 
              }  
           }
+      stage('Deploy app') {
+         steps {
+            kubectl apply -f app-deploy.yaml
+         }
+      }
     }
 
   post {
