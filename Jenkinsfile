@@ -4,12 +4,12 @@ pipeline {
      git_branch = "master"
    }
 
-  agent any
+  agent {'label dev'}
  
   stages {
     stage('Pull Source') {
       steps {
-        git credentialsId: 'ff6d7224-fa35-465b-a41b-93ff8a6d2663', branch: "${git_branch}", url: "${git_url}"
+        git credentialsId: 'b0c4c039-440b-4bab-ba03-54416be5ce20', branch: "${git_branch}", url: "${git_url}"
        
       }
      }
@@ -27,7 +27,7 @@ pipeline {
              }
         stage('Docker image push') {
            steps {
-                 withCredentials([usernamePassword(credentialsId: 'b2674f2b-668e-4af0-9b33-dc80948a6230', passwordVariable: 'Password', usernameVariable: 'Username')]) {
+                 withCredentials([usernamePassword(credentialsId: '6b60484c-e184-4668-b9d7-c402672d2a4f', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                  sh "sudo docker login -u ${env.Username} -p ${env.Password}"
                  sh "sudo docker image tag myjava-image salilkul87/myjava-image:test"
                  sh "sudo docker image push salilkul87/myjava-image:test" 
