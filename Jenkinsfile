@@ -14,7 +14,7 @@ pipeline {
       }
      }
     
-    stage('Maven Build-2') {
+    stage('Maven Build') {
      steps { 
           sh "mvn clean package && cp target/*.jar . "
      }
