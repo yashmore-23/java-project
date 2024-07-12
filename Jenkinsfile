@@ -42,9 +42,9 @@ pipeline {
 //     }
     }
 
-//  post {
-//    always {
-//      deleteDir() /* cleanup the workspace */
-//    }
-//  }
+  post {
+    always {
+      deleteDir() /* cleanup the workspace */
+    }
   }
+ }
