@@ -4,8 +4,8 @@ pipeline {
      git_branch = "master"
    }
 
-  agent {label 'dev'}
-  //agent any
+  //agent {label 'dev'}
+  agent any
   stages {
     stage('Pull Source') {
       steps {
@@ -34,11 +34,11 @@ pipeline {
                } 
              }  
           }
-   //   stage('Deploy app') {
-   //      steps {
-    //        sh 'kubectl apply -f app-deploy.yaml'
-    //     }
-     // }
+      stage('Deploy app') {
+         steps {
+           sh 'kubectl apply -f app-deploy.yaml'
+        }
+     }
     }
 
 //  post {
