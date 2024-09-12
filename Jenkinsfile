@@ -34,12 +34,12 @@ pipeline {
                } 
              }  
           }
-//      stage('Deploy app') {
-//         steps {
-//           sh 'ls -ltr'
-//           sh 'kubectl apply -f app-deploy.yaml'
-//        }
-//     }
+      stage('Deploy app') {
+         steps {
+           sh 'ls -ltr'
+           sh 'kubectl apply -f app-deploy.yaml'
+        }
+     }
     }
 
   post {
