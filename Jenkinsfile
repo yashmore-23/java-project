@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Pull Source') {
       steps {
-        git credentialsId: '04dea6e1-2c70-4574-bb87-589c84f2c7d0', branch: "${git_branch}", url: "${git_url}"
+        git credentialsId: 'c5e89767-e12e-49b8-becd-90852e5d3195', branch: "${git_branch}", url: "${git_url}"
        
       }
      }
@@ -27,7 +27,7 @@ pipeline {
              }
         stage('Docker image push') {
            steps {
-                 withCredentials([usernamePassword(credentialsId: '82e3eb43-a456-4553-8d5c-31f644e4c6be', passwordVariable: 'Password', usernameVariable: 'Username')]) {
+                 withCredentials([usernamePassword(credentialsId: '615498df-92e8-4905-9414-1a11f6e76dab', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                  sh "sudo docker login -u ${env.Username} -p ${env.Password}"
                  sh "sudo docker image tag myjava-image ymore23/myjava-image:test"
                  sh "sudo docker image tag myjava-image ymore23/myjava-image:${BUILD_NUMBER}"
